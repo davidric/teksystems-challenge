@@ -1,36 +1,31 @@
 import React from 'react';
+import styles from './styles.module.css';
 
 const SantaLetterForm: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-900 flex flex-col justify-between items-center">
-      <header className="w-full py-4 bg-white text-gray-900 text-center border-b border-gray-200">
-        <h1 className="text-2xl md:text-3xl font-serif">A Letter to Santa</h1>
+    <div className={styles.minHScreen}>
+      <header className={styles.header}>
+        <h1 className={styles.headerTitle}>A Letter to Santa</h1>
       </header>
 
-      <main className="flex flex-col items-center w-full flex-1 p-4 md:p-6">
-        <div className="w-full max-w-xl bg-white rounded-lg shadow p-6 md:p-8">
-          <p className="font-serif text-lg md:text-xl mb-4 md:mb-6 text-gray-900">
+      <main className={styles.main}>
+        <div className={styles.formContainer}>
+          <p className={styles.introText}>
             Ho ho ho, what do you want for Christmas?
           </p>
 
-          <label
-            htmlFor="userid"
-            className="block mb-2 text-gray-600 font-medium"
-          >
+          <label htmlFor="userid" className={styles.label}>
             Who are you?
           </label>
           <input
             id="userid"
             name="userid"
             placeholder="charlie.brown"
-            className="border border-gray-300 rounded-lg p-2 md:p-3 mb-4 w-full focus:border-black focus:ring-0"
+            className={styles.input}
           />
 
-          <form method="post" className="flex flex-col">
-            <label
-              htmlFor="wish"
-              className="block mb-2 text-gray-600 font-medium"
-            >
+          <form method="post" className={styles.form}>
+            <label htmlFor="wish" className={styles.label}>
               What do you want for Christmas?
             </label>
             <textarea
@@ -39,32 +34,24 @@ const SantaLetterForm: React.FC = () => {
               rows={4}
               maxLength={100}
               placeholder="Gifts!"
-              className="border border-gray-300 rounded-lg p-2 md:p-3 mb-4 w-full focus:border-black focus:ring-0 min-h-32"
+              className={styles.textarea}
             ></textarea>
-            <button
-              type="button"
-              id="submit-letter"
-              className="bg-black text-white rounded-lg py-2 md:py-3 px-4 md:px-6 hover:bg-gray-800 focus:outline-none"
-            >
+            <button type="button" id="submit-letter" className={styles.button}>
               Send
             </button>
           </form>
         </div>
       </main>
 
-      <footer className="w-full py-4 bg-white text-gray-900 text-center border-t border-gray-200">
+      <footer className={styles.footer}>
         Made by{' '}
-        <a
-          href="https://davidrica.com"
-          target="_blank"
-          className="text-black hover:underline"
-        >
+        <a href="https://davidrica.com" target="_blank" className={styles.link}>
           David Ricardo
         </a>
         !
       </footer>
 
-      <div className="fixed top-5 right-5">
+      <div className={styles.fixedTopRight}>
         <script src="https://button.glitch.me/button.js"></script>
       </div>
     </div>
