@@ -1,43 +1,42 @@
-/* styles.module.css */
 .minHScreen {
-  @apply min-h-screen bg-gray-100 text-gray-900 flex flex-col justify-between items-center;
+  @apply flex min-h-screen flex-col items-center justify-between bg-gray-100 text-gray-900;
 }
 .header {
-  @apply w-full py-4 bg-white text-gray-900 text-center border-b border-gray-200;
+  @apply w-full border-b border-gray-200 bg-white py-4 text-center text-gray-900;
 }
 .headerTitle {
-  @apply text-2xl md:text-3xl font-serif;
+  @apply font-serif text-2xl md:text-3xl;
 }
 .main {
-  @apply flex flex-col items-center w-full flex-1 p-4 md:p-6;
+  @apply flex w-full flex-1 flex-col items-center p-4 md:p-6;
 }
 .formContainer {
-  @apply w-full max-w-xl bg-white rounded-lg shadow p-6 md:p-8;
+  @apply w-full max-w-xl rounded-lg bg-white p-6 shadow md:p-8;
 }
 .introText {
-  @apply font-serif text-lg md:text-xl mb-4 md:mb-6 text-gray-900;
+  @apply mb-4 font-serif text-lg text-gray-900 md:mb-6 md:text-xl;
 }
 .label {
-  @apply block mb-2 text-gray-600 font-medium;
+  @apply mb-2 block font-medium text-gray-600;
 }
 .input {
-  @apply border border-gray-300 rounded-lg p-2 md:p-3 mb-4 w-full focus:border-black focus:ring-0;
+  @apply mb-4 w-full rounded-lg border border-gray-300 p-2 focus:border-black focus:ring-0 md:p-3;
 }
 .form {
   @apply flex flex-col;
 }
 .textarea {
-  @apply border border-gray-300 rounded-lg p-2 md:p-3 mb-4 w-full focus:border-black focus:ring-0 min-h-32;
+  @apply mb-4 min-h-32 w-full rounded-lg border border-gray-300 p-2 focus:border-black focus:ring-0 md:p-3;
 }
 .button {
-  @apply bg-black text-white rounded-lg py-2 md:py-3 px-4 md:px-6 hover:bg-gray-800 focus:outline-none;
+  @apply rounded-lg bg-black px-4 py-2 text-white hover:bg-gray-800 focus:outline-none md:px-6 md:py-3;
 }
 .footer {
-  @apply w-full py-4 bg-white text-gray-900 text-center border-t border-gray-200;
+  @apply w-full border-t border-gray-200 bg-white py-4 text-center text-gray-900;
 }
 .link {
   @apply text-black hover:underline;
 }
 .fixedTopRight {
-  @apply fixed top-5 right-5;
+  @apply fixed right-5 top-5;
 }

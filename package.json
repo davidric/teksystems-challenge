@@ -9,7 +9,6 @@
     "postinstall": "husky install"
   },
   "devDependencies": {
-    "css-modules-typescript-loader": "^4.0.1",
     "husky": "^9.1.4",
     "lint-staged": "^15.2.8",
     "turbo": "^2.0.11"
