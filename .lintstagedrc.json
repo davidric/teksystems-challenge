@@ -1,0 +1,6 @@
+{
+  "*.{js,jsx,ts,tsx}": ["prettier --write", "eslint"],
+  "*.ts?(x)": "bash -c 'yarn type-check --noEmit'",
+  "*.html": ["eslint", "prettier --write"],
+  "*.{js,jsx,ts,tsx,css,scss,md}": "prettier --write"
+}
