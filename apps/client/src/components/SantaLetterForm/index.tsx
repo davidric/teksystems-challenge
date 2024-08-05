@@ -1,7 +1,15 @@
 import React from 'react';
+import { Formik, Field, Form } from 'formik';
 import styles from './styles.module.css';
 
+interface FormValues {
+  username: string;
+  request: string;
+}
+
 const SantaLetterForm: React.FC = () => {
+  const initialValues: FormValues = { username: '', request: '' };
+
   return (
     <div className={styles.minHScreen}>
       <header className={styles.header}>
@@ -13,33 +21,38 @@ const SantaLetterForm: React.FC = () => {
           <p className={styles.introText}>
             Ho ho ho, what do you want for Christmas?
           </p>
-
-          <label htmlFor="userid" className={styles.label}>
-            Who are you?
-          </label>
-          <input
-            id="userid"
-            name="userid"
-            placeholder="charlie.brown"
-            className={styles.input}
-          />
-
-          <form method="post" className={styles.form}>
-            <label htmlFor="wish" className={styles.label}>
-              What do you want for Christmas?
-            </label>
-            <textarea
-              id="wish"
-              name="wish"
-              rows={4}
-              maxLength={100}
-              placeholder="Gifts!"
-              className={styles.textarea}
-            ></textarea>
-            <button type="button" id="submit-letter" className={styles.button}>
-              Send
-            </button>
-          </form>
+          <Formik
+            initialValues={initialValues}
+            onSubmit={(values, actions) => {
+              console.log({ values, actions });
+              alert(JSON.stringify(values, null, 2));
+              actions.setSubmitting(false);
+            }}
+          >
+            <Form className={styles.form}>
+              <label htmlFor="username" className={styles.label}>
+                Who are you?
+              </label>
+              <Field
+                name="username"
+                placeholder="charlie.brown"
+                className={styles.input}
+              />
+              <label htmlFor="request" className={styles.label}>
+                What do you want for Christmas?
+              </label>
+              <Field
+                name="request"
+                maxLength={100}
+                placeholder="Gifts!"
+                className={styles.textarea}
+                as="textarea"
+              />
+              <button type="submit" className={styles.button}>
+                Send
+              </button>
+            </Form>
+          </Formik>
         </div>
       </main>
 
@@ -50,10 +63,6 @@ const SantaLetterForm: React.FC = () => {
         </a>
         !
       </footer>
-
-      <div className={styles.fixedTopRight}>
-        <script src="https://button.glitch.me/button.js"></script>
-      </div>
     </div>
   );
 };

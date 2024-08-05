@@ -37,6 +37,3 @@
 .link {
   @apply text-black hover:underline;
 }
-.fixedTopRight {
-  @apply fixed right-5 top-5;
-}
