@@ -32,6 +32,9 @@ const SantaLetterForm: React.FC = () => {
     });
   };
 
+  const disableSubmit = ({ username, request }: FormValues) =>
+    !username || !request;
+
   if (loading) return <div>Loading...</div>;
 
   return (
@@ -46,29 +49,37 @@ const SantaLetterForm: React.FC = () => {
             Ho ho ho, what do you want for Christmas?
           </p>
           <Formik initialValues={initialValues} onSubmit={handleSubmitForm}>
-            <Form className={styles.form}>
-              <label htmlFor="username" className={styles.label}>
-                Who are you?
-              </label>
-              <Field
-                name="username"
-                placeholder="charlie.brown"
-                className={styles.input}
-              />
-              <label htmlFor="request" className={styles.label}>
-                What do you want for Christmas?
-              </label>
-              <Field
-                name="request"
-                maxLength={100}
-                placeholder="Gifts!"
-                className={styles.textarea}
-                as="textarea"
-              />
-              <button type="submit" className={styles.button}>
-                Send
-              </button>
-            </Form>
+            {({ values }) => (
+              <Form className={styles.form}>
+                <label htmlFor="username" className={styles.label}>
+                  Who are you?
+                </label>
+                <Field
+                  name="username"
+                  placeholder="charlie.brown"
+                  className={styles.input}
+                />
+                <label htmlFor="request" className={styles.label}>
+                  What do you want for Christmas?
+                </label>
+                <Field
+                  name="request"
+                  maxLength={100}
+                  placeholder="Gifts!"
+                  className={styles.textarea}
+                  as="textarea"
+                />
+                <button
+                  type="submit"
+                  className={
+                    disableSubmit(values) ? styles.btnDisabled : styles.btn
+                  }
+                  disabled={disableSubmit(values)}
+                >
+                  Send
+                </button>
+              </Form>
+            )}
           </Formik>
         </div>
       </main>
