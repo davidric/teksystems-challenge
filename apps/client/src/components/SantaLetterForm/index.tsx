@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import styles from './styles.module.css';
+import useRequest from '../../hooks/useRequest';
 
 interface FormValues {
   username: string;
@@ -9,6 +10,29 @@ interface FormValues {
 
 const SantaLetterForm: React.FC = () => {
   const initialValues: FormValues = { username: '', request: '' };
+
+  const { data, loading, sendRequest } = useRequest<{
+    message: string;
+  }>();
+
+  console.log('data:: ', data);
+
+  const handleSubmitForm = ({ username, request }: FormValues) => {
+    console.log('handleSubmitForm');
+    sendRequest({
+      url: '/api/submit',
+      method: 'POST',
+      body: { username, request },
+      onSuccess: data => {
+        console.log('data onSuccess: ', data);
+      },
+      onError: error => {
+        alert(`Request failed with error: ${error.message}`);
+      },
+    });
+  };
+
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div className={styles.minHScreen}>
@@ -21,14 +45,7 @@ const SantaLetterForm: React.FC = () => {
           <p className={styles.introText}>
             Ho ho ho, what do you want for Christmas?
           </p>
-          <Formik
-            initialValues={initialValues}
-            onSubmit={(values, actions) => {
-              console.log({ values, actions });
-              alert(JSON.stringify(values, null, 2));
-              actions.setSubmitting(false);
-            }}
-          >
+          <Formik initialValues={initialValues} onSubmit={handleSubmitForm}>
             <Form className={styles.form}>
               <label htmlFor="username" className={styles.label}>
                 Who are you?

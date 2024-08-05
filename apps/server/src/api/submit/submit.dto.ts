@@ -7,5 +7,5 @@ export class SubmitDto {
 
   @IsString()
   @IsNotEmpty()
-  message: string;
+  request: string;
 }
