@@ -7,7 +7,7 @@ export class SubmitController {
   constructor(private readonly submitService: SubmitService) {}
 
   @Post()
-  submitData(@Body() payload: SubmitDto) {
-    return this.submitService.submitData(payload);
+  submit(@Body() payload: SubmitDto) {
+    return this.submitService.validateSubmission(payload);
   }
 }
