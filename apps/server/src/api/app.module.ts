@@ -6,11 +6,18 @@ import { join } from 'path';
 import { SubmitModule } from './submit/submit.module';
 import { UsersModule } from './users/users.module';
 import { UserProfilesModule } from './user-profiles/user-profiles.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import { MailerModule } from '@nestjs-modules/mailer';
+import { MailerConfigService } from 'src/services/mailer/mailer.config';
 
 @Module({
   imports: [
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../..', 'client', 'dist'),
+    }),
+    ScheduleModule.forRoot(),
+    MailerModule.forRootAsync({
+      useClass: MailerConfigService,
     }),
     SubmitModule,
     UsersModule,

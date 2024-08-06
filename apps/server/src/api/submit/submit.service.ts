@@ -2,16 +2,18 @@ import { Injectable, BadRequestException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { UserProfilesService } from '../user-profiles/user-profiles.service';
 import { SubmitDto } from './submit.dto';
+import { CronService } from 'src/services/mailer/cron.service';
+import { EmailContext } from 'src/types';
 
 @Injectable()
 export class SubmitService {
   constructor(
     private readonly userService: UsersService,
     private readonly userProfilesService: UserProfilesService,
+    private readonly cronService: CronService,
   ) {}
 
   validateSubmission({ username, request }: SubmitDto) {
-    console.log('requests: ', request);
     const user = this.userService
       .getAllUsers()
       .find(u => u.username === username);
@@ -34,6 +36,14 @@ export class SubmitService {
     if (age > 10) {
       throw new BadRequestException('User is older than 10 years');
     }
+
+    const context: EmailContext = {
+      username,
+      address: profile.address,
+      request,
+    };
+
+    this.cronService.addToQueue("Child's Request", context);
 
     return {
       title: 'Success',
