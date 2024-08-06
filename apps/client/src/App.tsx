@@ -1,9 +1,9 @@
-import SantaLetterForm from './components/SantaLetterForm';
+import SantaLetter from './pages/SantaLetter';
 
 function App() {
   return (
     <>
-      <SantaLetterForm />
+      <SantaLetter />
     </>
   );
 }

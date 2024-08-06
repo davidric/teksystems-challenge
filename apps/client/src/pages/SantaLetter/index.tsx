@@ -2,13 +2,14 @@ import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import styles from './styles.module.css';
 import useRequest from '../../hooks/useRequest';
+import Button from '../../components/Button';
 
 interface FormValues {
   username: string;
   request: string;
 }
 
-const SantaLetterForm: React.FC = () => {
+const SantaLetter: React.FC = () => {
   const initialValues: FormValues = { username: '', request: '' };
 
   const { data, loading, sendRequest } = useRequest<{
@@ -18,7 +19,6 @@ const SantaLetterForm: React.FC = () => {
   console.log('data:: ', data);
 
   const handleSubmitForm = ({ username, request }: FormValues) => {
-    console.log('handleSubmitForm');
     sendRequest({
       url: '/api/submit',
       method: 'POST',
@@ -34,8 +34,6 @@ const SantaLetterForm: React.FC = () => {
 
   const disableSubmit = ({ username, request }: FormValues) =>
     !username || !request;
-
-  if (loading) return <div>Loading...</div>;
 
   return (
     <div className={styles.minHScreen}>
@@ -69,15 +67,13 @@ const SantaLetterForm: React.FC = () => {
                   className={styles.textarea}
                   as="textarea"
                 />
-                <button
-                  type="submit"
-                  className={
-                    disableSubmit(values) ? styles.btnDisabled : styles.btn
-                  }
+                <Button
+                  isLoading={loading}
+                  loadingText="Sending..."
                   disabled={disableSubmit(values)}
                 >
                   Send
-                </button>
+                </Button>
               </Form>
             )}
           </Formik>
@@ -95,4 +91,4 @@ const SantaLetterForm: React.FC = () => {
   );
 };
 
-export default SantaLetterForm;
+export default SantaLetter;
