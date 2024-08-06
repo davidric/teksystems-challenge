@@ -1,19 +1,14 @@
 import React from 'react';
 import styles from './styles.module.css';
 import Spinner from '../Spinner';
+import { ButtonProps } from '../../types';
 
-interface Props {
-  isLoading?: boolean;
-  loadingText?: string;
-  disabled?: boolean;
-}
-
-const Button: React.FC<React.PropsWithChildren<Props>> = ({
+const Button: React.FC<React.PropsWithChildren<ButtonProps>> = ({
   isLoading,
   loadingText,
   disabled,
   children,
-}: React.PropsWithChildren<Props>) => {
+}: React.PropsWithChildren<ButtonProps>) => {
   return (
     <button
       type="submit"

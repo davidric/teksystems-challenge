@@ -1,22 +1,15 @@
 import { useState, useCallback } from 'react';
-import axios, { AxiosError, AxiosRequestConfig } from 'axios';
+import axios, { AxiosError } from 'axios';
+import { UseRequestConfig } from '../types';
 
 axios.defaults.headers.common['Authorization'] = 'Bearer ACCESS_TOKEN';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
-
-interface RequestConfig extends AxiosRequestConfig {
-  url: string;
-  method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
-  body?: unknown;
-  onSuccess?: (data: unknown) => void;
-  onError?: (error: Error) => void;
-}
 
 const useRequest = <T>() => {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const sendRequest = useCallback(async (config: RequestConfig) => {
+  const sendRequest = useCallback(async (config: UseRequestConfig<T>) => {
     setLoading(true);
     try {
       const response = await axios({

@@ -35,7 +35,10 @@ export class SubmitService {
       throw new BadRequestException('User is older than 10 years');
     }
 
-    return { message: 'Success' };
+    return {
+      title: 'Success',
+      message: 'Your request request has been received.',
+    };
   }
 
   private calculateAge(birthdate: Date): number {

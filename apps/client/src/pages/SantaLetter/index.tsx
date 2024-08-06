@@ -1,35 +1,38 @@
-import React from 'react';
-import { Formik, Field, Form } from 'formik';
+import React, { useState } from 'react';
+import { Formik, Field, Form, FormikHelpers } from 'formik';
 import styles from './styles.module.css';
 import useRequest from '../../hooks/useRequest';
 import Button from '../../components/Button';
-
-interface FormValues {
-  username: string;
-  request: string;
-}
+import Modal from '../../components/Modal';
+import { FormValues, SubmitResponse } from '../../types';
 
 const SantaLetter: React.FC = () => {
+  const initialModalContent = { title: '', message: '' };
   const initialValues: FormValues = { username: '', request: '' };
+  const [modalContent, setModalContent] = useState(initialModalContent);
 
-  const { data, loading, sendRequest } = useRequest<{
-    message: string;
-  }>();
+  const { loading, sendRequest } = useRequest<SubmitResponse>();
 
-  console.log('data:: ', data);
-
-  const handleSubmitForm = ({ username, request }: FormValues) => {
+  const handleSubmitForm = (
+    { username, request }: FormValues,
+    formik: FormikHelpers<FormValues>,
+  ) => {
     sendRequest({
       url: '/api/submit',
       method: 'POST',
       body: { username, request },
-      onSuccess: data => {
-        console.log('data onSuccess: ', data);
+      onSuccess: ({ title, message }) => {
+        setModalContent({ title, message });
+        formik.resetForm();
       },
       onError: error => {
-        alert(`Request failed with error: ${error.message}`);
+        setModalContent({ title: 'Request failed!', message: error.message });
       },
     });
+  };
+
+  const handleClose = () => {
+    setModalContent(initialModalContent);
   };
 
   const disableSubmit = ({ username, request }: FormValues) =>
@@ -87,6 +90,14 @@ const SantaLetter: React.FC = () => {
         </a>
         !
       </footer>
+
+      <Modal
+        show={!!modalContent.message}
+        onClose={handleClose}
+        title={modalContent.title}
+      >
+        <p>{modalContent.message}</p>
+      </Modal>
     </div>
   );
 };

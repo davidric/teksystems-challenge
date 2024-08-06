@@ -1,0 +1,27 @@
+.modalBackdrop {
+  @apply fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 px-4;
+}
+
+.modalContainer {
+  @apply w-full max-w-lg rounded-md bg-white;
+}
+
+.modalHeader {
+  @apply flex items-center justify-between border-b border-gray-300 p-4;
+}
+
+.modalBody {
+  @apply p-4;
+}
+
+.modalFooter {
+  @apply flex justify-end border-t border-gray-300 p-4;
+}
+
+.closeButton {
+  @apply cursor-pointer border-none bg-none text-xl focus:outline-none;
+}
+
+.actionButton {
+  @apply cursor-pointer rounded-md bg-black px-4 py-2 text-white focus:outline-none;
+}
