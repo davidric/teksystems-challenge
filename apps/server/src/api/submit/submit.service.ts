@@ -2,7 +2,7 @@ import { Injectable, BadRequestException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { UserProfilesService } from '../user-profiles/user-profiles.service';
 import { SubmitDto } from './submit.dto';
-import { CronService } from 'src/services/mailer/cron.service';
+import { EmailService } from 'src/services/mailer/email.service';
 import { EmailContext } from 'src/types';
 
 @Injectable()
@@ -10,7 +10,7 @@ export class SubmitService {
   constructor(
     private readonly userService: UsersService,
     private readonly userProfilesService: UserProfilesService,
-    private readonly cronService: CronService,
+    private readonly emailService: EmailService,
   ) {}
 
   validateSubmission({ username, request }: SubmitDto) {
@@ -43,7 +43,7 @@ export class SubmitService {
       request,
     };
 
-    this.cronService.addToQueue("Child's Request", context);
+    this.emailService.addToQueue("Child's Request", context);
 
     return {
       title: 'Success',

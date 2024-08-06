@@ -9,7 +9,6 @@ export class MailerConfigService implements MailerOptionsFactory {
       transport: {
         host: 'smtp.ethereal.email',
         port: 587,
-        // secure: false, // Use true if using SSL/TLS
         auth: {
           user: 'yesenia.johnson34@ethereal.email',
           pass: 'qeXhzMbcutDrbxBR1W',
