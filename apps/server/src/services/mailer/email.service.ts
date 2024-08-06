@@ -11,15 +11,15 @@ export class EmailService {
 
   @Cron('*/15 * * * * *')
   async handleCron() {
-    if (this.emailQueue.length > 0) {
-      const { subject, context } = this.emailQueue.shift();
-
+    while (this.emailQueue.length > 0) {
+      const { subject, context } = this.emailQueue[0];
       await this.mailerService.sendMail({
         to: 'santa@northpole.com',
         subject,
         template: process.cwd() + '/template/child-email-template',
         context,
       });
+      this.emailQueue.shift();
     }
   }
 
