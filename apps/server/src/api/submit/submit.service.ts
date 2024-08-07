@@ -22,9 +22,7 @@ export class SubmitService {
       throw new BadRequestException('User not registered');
     }
 
-    const profile = this.userProfilesService
-      .getAllProfiles()
-      .find(p => p.userUid === user.uid);
+    const profile = this.userProfilesService.getProfileByUserUid(user.uid);
 
     if (!profile) {
       throw new BadRequestException('User profile not found');
