@@ -3,7 +3,7 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class MailerConfigService implements MailerOptionsFactory {
+export class EmailConfigService implements MailerOptionsFactory {
   createMailerOptions(): MailerOptions {
     return {
       transport: {

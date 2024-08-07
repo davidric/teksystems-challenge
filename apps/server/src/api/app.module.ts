@@ -8,7 +8,7 @@ import { UsersModule } from './users/users.module';
 import { UserProfilesModule } from './user-profiles/user-profiles.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { MailerModule } from '@nestjs-modules/mailer';
-import { MailerConfigService } from 'src/services/mailer/mailer.config';
+import { EmailConfigService } from 'src/services/email/email.config';
 
 @Module({
   imports: [
@@ -17,7 +17,7 @@ import { MailerConfigService } from 'src/services/mailer/mailer.config';
     }),
     ScheduleModule.forRoot(),
     MailerModule.forRootAsync({
-      useClass: MailerConfigService,
+      useClass: EmailConfigService,
     }),
     SubmitModule,
     UsersModule,

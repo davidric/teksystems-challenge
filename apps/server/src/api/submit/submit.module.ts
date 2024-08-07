@@ -3,7 +3,7 @@ import { SubmitController } from './submit.controller';
 import { SubmitService } from './submit.service';
 import { UsersService } from '../users/users.service';
 import { UserProfilesService } from '../user-profiles/user-profiles.service';
-import { EmailService } from 'src/services/mailer/email.service';
+import { EmailService } from 'src/services/email/email.service';
 
 @Module({
   controllers: [SubmitController],

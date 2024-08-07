@@ -2,7 +2,7 @@ import { Injectable, BadRequestException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { UserProfilesService } from '../user-profiles/user-profiles.service';
 import { SubmitDto } from './submit.dto';
-import { EmailService } from 'src/services/mailer/email.service';
+import { EmailService } from 'src/services/email/email.service';
 import { EmailContext } from 'src/types';
 import { formatDate } from 'src/utils/helper';
 

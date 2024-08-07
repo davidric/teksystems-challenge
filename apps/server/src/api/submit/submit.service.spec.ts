@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { SubmitService } from './submit.service';
 import { UsersService } from '../users/users.service';
 import { UserProfilesService } from '../user-profiles/user-profiles.service';
-import { EmailService } from 'src/services/mailer/email.service';
+import { EmailService } from 'src/services/email/email.service';
 import { BadRequestException } from '@nestjs/common';
 
 describe('SubmitService', () => {
