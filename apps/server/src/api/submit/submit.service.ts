@@ -4,6 +4,7 @@ import { UserProfilesService } from '../user-profiles/user-profiles.service';
 import { SubmitDto } from './submit.dto';
 import { EmailService } from 'src/services/mailer/email.service';
 import { EmailContext } from 'src/types';
+import { formatDate } from 'src/utils/helper';
 
 @Injectable()
 export class SubmitService {
@@ -26,7 +27,7 @@ export class SubmitService {
       throw new BadRequestException('User profile not found');
     }
 
-    const birthdate = new Date(profile.birthdate);
+    const birthdate = new Date(formatDate(profile.birthdate));
     const age = this.calculateAge(birthdate);
 
     if (age > 10) {
