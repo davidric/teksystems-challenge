@@ -14,9 +14,7 @@ export class SubmitService {
   ) {}
 
   validateSubmission({ username, request }: SubmitDto) {
-    const user = this.userService
-      .getAllUsers()
-      .find(u => u.username === username);
+    const user = this.userService.getUserByUsername(username);
 
     if (!user) {
       throw new BadRequestException('User not registered');
