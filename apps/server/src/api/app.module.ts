@@ -13,7 +13,7 @@ import { EmailConfigService } from 'src/services/email/email.config';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '../..', 'client', 'dist'),
+      rootPath: join(__dirname, '../../..', 'client', 'dist'),
     }),
     ScheduleModule.forRoot(),
     MailerModule.forRootAsync({

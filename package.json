@@ -4,8 +4,8 @@
   "description": "A simple Node app built on Express, instantly up and running.",
   "scripts": {
     "build": "turbo run build",
-    "start": "turbo run dev",
-    "start:prod": "node apps/server/dist/main",
+    "dev": "turbo run dev",
+    "start": "NODE_ENV=production node apps/server/dist/main",
     "postinstall": "husky install"
   },
   "devDependencies": {

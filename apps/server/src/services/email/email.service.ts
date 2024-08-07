@@ -3,6 +3,11 @@ import { Cron } from '@nestjs/schedule';
 import { EmailContext } from 'src/types';
 import { MailerService } from '@nestjs-modules/mailer';
 
+const templatePath =
+  process.env.NODE_ENV === 'production'
+    ? '/apps/server/template/child-email-template'
+    : '/template/child-email-template';
+
 @Injectable()
 export class EmailService {
   private emailQueue: Array<{ subject: string; context: EmailContext }> = [];
@@ -16,7 +21,7 @@ export class EmailService {
       await this.mailerService.sendMail({
         to: 'santa@northpole.com',
         subject,
-        template: process.cwd() + '/template/child-email-template',
+        template: process.cwd() + templatePath,
         context,
       });
     }
