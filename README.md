@@ -57,6 +57,24 @@ For instance, to install `@nestjs/serve-static` in the server workspace:
 npm install --workspace server @nestjs/serve-static
 ```
 
+## Running Unit Tests
+
+To run unit tests for both the client and server sides of the application, you can use the following command from the root folder of the project:
+
+```bash
+npm run test
+```
+
+## Running Test Coverage
+
+To generate and view test coverage reports, use the following command:
+
+```bash
+npm run test:coverage
+```
+
+This will run the tests and produce a coverage report, which can be useful for understanding how much of your code is being tested.
+
 ## Mailer Credentials
 
 To view the emails sent to the SMTP server, follow these steps:
