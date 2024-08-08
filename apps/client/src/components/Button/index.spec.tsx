@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import Button from './';
+import Button from '.';
 
 // Mock the Spinner component
 vi.mock('../Spinner', () => ({

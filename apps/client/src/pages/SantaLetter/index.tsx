@@ -56,6 +56,7 @@ const SantaLetter: React.FC = () => {
                   Who are you?
                 </label>
                 <Field
+                  id="username"
                   name="username"
                   placeholder="charlie.brown"
                   className={styles.input}
@@ -64,6 +65,7 @@ const SantaLetter: React.FC = () => {
                   What do you want for Christmas?
                 </label>
                 <Field
+                  id="request"
                   name="request"
                   maxLength={100}
                   placeholder="Gifts!"
