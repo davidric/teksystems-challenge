@@ -94,7 +94,9 @@ To view the emails sent to the SMTP server, follow these steps:
 - **Backend**: NestJS
 - **Monorepo Management**: TurboRepo
 
-## Additional Notes
+## Please Note
+
+- **Running the App on Glitch**: The app hosted on [Glitch.com](https://glitch.com) is served directly from the build folder. This approach is taken to ensure that the application runs smoothly on the Glitch platform. Any changes made directly in the Glitch editor will **not** be reflected on the preview site. To see your updates, you must rebuild the project and update the build folder accordingly. To run the development server and see live changes, please do so on your local machine.
 
 - **API Calls in Development**: If you observe that API calls are being made twice in development mode, this is typically due to React's Strict Mode. Strict Mode is designed to intentionally double-invoke certain lifecycle methods and effects to help identify side effects and potential issues.
 
