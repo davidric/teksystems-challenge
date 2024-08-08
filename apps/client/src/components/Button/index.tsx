@@ -8,7 +8,7 @@ const Button: React.FC<React.PropsWithChildren<ButtonProps>> = ({
   loadingText,
   disabled,
   children,
-}: React.PropsWithChildren<ButtonProps>) => {
+}) => {
   return (
     <button
       type="submit"

@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
 
-export interface ButtonProps {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
   loadingText?: string;
   disabled?: boolean;
